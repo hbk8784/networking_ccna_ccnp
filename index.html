@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hatif Belal Khan's networking portfolio: Cisco routing, switching, troubleshooting, and CCNA/CCNP Enterprise study labs."
+    />
+    <meta name="theme-color" content="#071521" />
+    <title>Hatif Belal Khan | Network Engineer</title>
+
+    <style>
+      html[data-theme="light"] {
+        background: #f2f6f8;
+      }
+      html[data-theme="dark"] {
+        background: #071521;
+      }
+    </style>
+    <script>
+      (function () {
+        const storageKey = "theme";
+        const storedTheme = localStorage.getItem(storageKey);
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        const darkMode = storedTheme ? JSON.parse(storedTheme) : prefersDark;
+        document.documentElement.setAttribute(
+          "data-theme",
+          darkMode ? "dark" : "light",
+        );
+        localStorage.setItem(storageKey, JSON.stringify(darkMode));
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/networking.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+    <nav id="navbar" class="flex__center" aria-label="Main navigation">
+      <a class="logo" href="#header" aria-label="Hatif Belal Khan, home">
+        <span class="logo-mark">HK</span>
+        <span class="logo-name">HATIF BELAL KHAN<span>/ NETWORKS</span></span>
+      </a>
+      <div class="flex nav__routes">
+        <a href="#header" class="route">Home</a>
+        <a href="#about" class="route">About</a>
+        <a href="#services" class="route">Focus</a>
+        <a href="#projects" class="route">Lab work</a>
+        <a href="#contact" class="route">Contact</a>
+      </div>
+      <div class="nav__tools flex__center">
+        <label class="theme__toggle" aria-label="Toggle color theme">
+          <input type="checkbox" id="theme-checkbox" />
+          <span class="icon__container">
+            <i data-lucide="sun" class="sun"></i>
+            <i data-lucide="moon" class="moon"></i>
+          </span>
+        </label>
+        <button
+          class="icon__container menu__btn"
+          id="menu__btn"
+          type="button"
+          aria-label="Open menu"
+        >
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </nav>
+
+    <aside class="sidebar" aria-label="Mobile navigation">
+      <div class="sidebar__wrapper">
+        <div class="flex__center top">
+          <a class="logo" href="#header" aria-label="Hatif Belal Khan, home">
+            <span class="logo-mark">HK</span>
+            <span class="logo-name">HATIF <span>/ NETWORKS</span></span>
+          </a>
+          <button
+            class="icon__container"
+            id="close-sidebar-btn"
+            type="button"
+            aria-label="Close menu"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="middle navlinks">
+          <a href="#header" class="navitem">Home</a>
+          <a href="#about" class="navitem">About</a>
+          <a href="#services" class="navitem">Network focus</a>
+          <a href="#projects" class="navitem">Lab work</a>
+          <a href="#contact" class="navitem">Contact</a>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <section id="header" class="bg__secondary">
+        <div class="spotlight"></div>
+        <div class="container">
+          <div class="grid">
+            <div
+              class="me network-visual"
+              aria-label="Illustrated enterprise network topology"
+            >
+              <div class="visual-frame">
+                <div class="visual-topline">
+                  <span class="visual-label"
+                    ><span class="status-dot"></span> LAB TOPOLOGY / 01</span
+                  >
+                  <span class="visual-protocol">IPv4 · OSPF</span>
+                </div>
+                <svg
+                  class="topology-main"
+                  viewBox="0 0 540 390"
+                  role="img"
+                  aria-labelledby="topology-title"
+                >
+                  <title id="topology-title">
+                    A router connecting two switches, a firewall, and client
+                    networks
+                  </title>
+                  <defs>
+                    <linearGradient id="linkGlow" x1="0" x2="1">
+                      <stop
+                        offset="0"
+                        stop-color="#24d5bc"
+                        stop-opacity=".25"
+                      />
+                      <stop offset=".5" stop-color="#24d5bc" />
+                      <stop
+                        offset="1"
+                        stop-color="#24d5bc"
+                        stop-opacity=".25"
+                      />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    class="topology-link"
+                    d="M270 113V174M270 216L150 282M270 216L390 282M297 196H425"
+                  />
+                  <path
+                    class="topology-link topology-link--soft"
+                    d="M150 315V350M390 315V350M450 196H500"
+                  />
+                  <path
+                    class="topology-pulse"
+                    d="M270 113V174M270 216L150 282M270 216L390 282M297 196H425"
+                  />
+                  <g
+                    class="topo-node topo-node--core"
+                    transform="translate(216 66)"
+                  >
+                    <rect width="108" height="48" rx="12" />
+                    <path d="M25 24h18m-9-9v18m25-13h23m-23 9h23" />
+                    <text x="54" y="68" text-anchor="middle">EDGE ROUTER</text>
+                  </g>
+                  <g
+                    class="topo-node topo-node--router"
+                    transform="translate(216 174)"
+                  >
+                    <rect width="108" height="48" rx="12" />
+                    <path d="M25 24h18m-9-9v18m25-13h23m-23 9h23" />
+                    <text x="54" y="68" text-anchor="middle">CORE · L3</text>
+                  </g>
+                  <g
+                    class="topo-node topo-node--access"
+                    transform="translate(96 282)"
+                  >
+                    <rect width="108" height="48" rx="12" />
+                    <path d="M25 18h58M25 25h58M25 32h58" />
+                    <text x="54" y="68" text-anchor="middle">ACCESS · A</text>
+                  </g>
+                  <g
+                    class="topo-node topo-node--access"
+                    transform="translate(336 282)"
+                  >
+                    <rect width="108" height="48" rx="12" />
+                    <path d="M25 18h58M25 25h58M25 32h58" />
+                    <text x="54" y="68" text-anchor="middle">ACCESS · B</text>
+                  </g>
+                  <g
+                    class="topo-node topo-node--edge"
+                    transform="translate(425 174)"
+                  >
+                    <rect width="58" height="44" rx="11" />
+                    <path d="M19 14l-7 8 7 8m20-16 7 8-7 8m-5-20-7 24" />
+                    <text x="29" y="64" text-anchor="middle">WAN</text>
+                  </g>
+                  <g class="client-dot" transform="translate(131 353)">
+                    <circle r="6" />
+                    <text x="0" y="25" text-anchor="middle">VLAN 10</text>
+                  </g>
+                  <g class="client-dot" transform="translate(171 353)">
+                    <circle r="6" />
+                    <text x="0" y="25" text-anchor="middle">VLAN 20</text>
+                  </g>
+                  <g class="client-dot" transform="translate(371 353)">
+                    <circle r="6" />
+                    <text x="0" y="25" text-anchor="middle">VLAN 30</text>
+                  </g>
+                  <g class="client-dot" transform="translate(411 353)">
+                    <circle r="6" />
+                    <text x="0" y="25" text-anchor="middle">VLAN 40</text>
+                  </g>
+                </svg>
+                <div class="visual-footer">
+                  <span><i data-lucide="activity"></i> ROUTING ACTIVE</span>
+                  <span>10.10.0.0/16</span>
+                </div>
+              </div>
+              <div class="floating-note note-top">
+                <i data-lucide="shield-check"></i
+                ><span>SEGMENTED<br /><b>BY DESIGN</b></span>
+              </div>
+              <div class="floating-note note-bottom">
+                <span class="signal-bars"><i></i><i></i><i></i><i></i></span
+                ><span>LINKS<br /><b>STABLE</b></span>
+              </div>
+            </div>
+
+            <div class="user_info">
+              <p class="eyebrow">
+                <span></span> NETWORKING · ROUTING · SWITCHING
+              </p>
+              <h2 class="sub__title">
+                Hi, I’m <span class="primary">Hatif</span>.
+              </h2>
+              <h1 class="title">
+                Building networks that keep people connected.
+              </h1>
+              <p class="description">
+                Aspiring network engineer focused on Cisco routing and
+                switching, practical troubleshooting, and secure, resilient
+                network design. I’m developing my skills through hands-on labs
+                mapped to CCNA and CCNP Enterprise topics.
+              </p>
+              <div class="focus-chips" aria-label="Current study focus">
+                <span><i data-lucide="route"></i> Routing &amp; switching</span>
+                <span><i data-lucide="terminal"></i> Cisco IOS / CLI</span>
+                <span
+                  ><i data-lucide="book-open-check"></i> CCNA → CCNP
+                  Enterprise</span
+                >
+              </div>
+              <div class="flex buttons">
+                <div class="flex social__handles" aria-label="Social links">
+                  <a
+                    href="https://github.com/hbk8784"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="icon__container handle"
+                    aria-label="GitHub"
+                    ><i data-custom-icon="github"></i
+                  ></a>
+                  <a
+                    href="https://www.linkedin.com/in/hatif-belal-khan-4074a5230"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="icon__container handle"
+                    aria-label="LinkedIn"
+                    ><i data-custom-icon="linkedin"></i
+                  ></a>
+                  <a
+                    href="mailto:hb8784@gmail.com"
+                    class="icon__container handle"
+                    aria-label="Email"
+                    ><i data-custom-icon="email"></i
+                  ></a>
+                </div>
+                <a href="#contact" class="btn btn__primary"
+                  >Let’s connect <i data-lucide="arrow-up-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="points" aria-label="Networking focus areas">
+              <div class="point">
+                <div class="metric-icon"><i data-lucide="network"></i></div>
+                <p class="metric-value">LAN / WAN</p>
+                <p class="text__muted">Network fundamentals</p>
+              </div>
+              <div class="point">
+                <div class="metric-icon"><i data-lucide="git-branch"></i></div>
+                <p class="metric-value">L2 + L3</p>
+                <p class="text__muted">Switching &amp; routing</p>
+              </div>
+              <div class="point">
+                <div class="metric-icon"><i data-lucide="shield"></i></div>
+                <p class="metric-value">Security</p>
+                <p class="text__muted">ACLs, NAT &amp; access</p>
+              </div>
+              <div class="point">
+                <div class="metric-icon">
+                  <i data-lucide="flask-conical"></i>
+                </div>
+                <p class="metric-value">Hands-on</p>
+                <p class="text__muted">Practice lab scenarios</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container grid">
+          <article class="box self__start about-intro">
+            <div class="cluster">
+              <p class="eyebrow"><span></span> A LITTLE ABOUT ME</p>
+              <h2 class="sub__title">
+                Curious by nature.
+                <span class="primary">Methodical by design.</span>
+              </h2>
+              <p class="description">
+                I enjoy understanding what happens between a device and the
+                services it depends on. My approach is to build a clear
+                topology, configure it deliberately, verify each layer, and
+                document what I learn.
+              </p>
+              <div class="location-line">
+                <i data-lucide="map-pin"></i> Kolkata, India
+              </div>
+            </div>
+            <div class="about-orbit" aria-hidden="true">
+              <span>OSI</span><i></i><i></i><i></i>
+            </div>
+          </article>
+
+          <article class="col-2 box about-terminal">
+            <div class="cluster flex row">
+              <div class="code__block">
+                <div class="flex__center dot__container">
+                  <span class="dot"></span><span class="dot"></span
+                  ><span class="dot"></span
+                  ><span class="terminal-title">router01 · running-config</span>
+                </div>
+                <pre><code class="language-plaintext">hostname EDGE-RTR
+!
+interface g0/0
+ description UPLINK-TO-CORE
+ ip address 10.10.0.1 255.255.255.252
+ no shutdown
+!
+router ospf 10
+ router-id 10.10.10.1
+ network 10.10.0.0 0.0.255.255 area 0
+!</code></pre>
+              </div>
+              <div class="my__drive">
+                <p class="eyebrow"><span></span> HOW I WORK</p>
+                <h2 class="sub__title">
+                  Understand. <span class="primary">Configure.</span> Verify.
+                </h2>
+                <p class="description">
+                  Good networking is more than making a link come up. I’m
+                  building habits around structured troubleshooting, readable
+                  configurations, and checking the result with the right show
+                  commands.
+                </p>
+                <div class="principle-list">
+                  <span><i data-lucide="check"></i> Trace the path</span
+                  ><span><i data-lucide="check"></i> Test the change</span
+                  ><span><i data-lucide="check"></i> Document the result</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="col-2 box skills-box">
+            <div class="cluster">
+              <p class="eyebrow"><span></span> TECHNICAL TOOLKIT</p>
+              <h2 class="sub__title">
+                Networking <span class="primary">focus areas</span>
+              </h2>
+              <p class="description">
+                Core concepts I’m studying and practicing across Cisco
+                networking labs.
+              </p>
+              <div class="stacks__container">
+                <span class="skill-tag"
+                  ><i data-lucide="network"></i> IPv4 subnetting</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="workflow"></i> VLANs &amp; trunking</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="route"></i> Static &amp; dynamic
+                  routing</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="git-branch"></i> OSPF</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="repeat-2"></i> STP &amp; EtherChannel</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="shield-check"></i> ACLs &amp; NAT</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="server"></i> DHCP &amp; DNS</span
+                >
+                <span class="skill-tag"
+                  ><i data-lucide="terminal"></i> Cisco IOS CLI</span
+                >
+              </div>
+              <p class="study-note">
+                <i data-lucide="book-open"></i> Current path: CCNA foundations
+                with CCNP Enterprise topics as the next step.
+              </p>
+            </div>
+          </article>
+
+          <article class="box last__box">
+            <div class="cluster">
+              <p class="eyebrow"><span></span> OPEN TO OPPORTUNITIES</p>
+              <h2 class="text__white sub__title">
+                Ready to learn from real networks and contribute to a thoughtful
+                team.
+              </h2>
+              <a href="#contact" class="btn"
+                >Get in touch <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="services" class="bg__secondary">
+        <div class="container">
+          <div class="section__header">
+            <p class="eyebrow"><span></span> WHAT I’M BUILDING</p>
+            <h2 class="sub__title">
+              Network <span class="primary">focus</span>
+            </h2>
+            <p class="description">
+              A practical foundation across the layers that keep an organization
+              connected, available, and secure.
+            </p>
+          </div>
+          <div class="services">
+            <article class="service">
+              <div class="flex__center circle">
+                <div class="spotlight"></div>
+                <div class="icon__container">
+                  <i data-lucide="waypoints"></i>
+                </div>
+              </div>
+              <p class="service-index">01 / CONNECTIVITY</p>
+              <h3 class="name">Routing &amp; switching</h3>
+              <p class="text__muted description">
+                Building and troubleshooting LANs with VLANs, 802.1Q trunks,
+                inter-VLAN routing, STP, EtherChannel, and OSPF fundamentals.
+              </p>
+              <a href="#projects" class="service-link"
+                >Explore lab scenarios <i data-lucide="arrow-up-right"></i
+              ></a>
+            </article>
+            <article class="service">
+              <div class="flex__center circle">
+                <div class="spotlight"></div>
+                <div class="icon__container">
+                  <i data-lucide="shield-check"></i>
+                </div>
+              </div>
+              <p class="service-index">02 / CONTROL</p>
+              <h3 class="name">Security &amp; edge services</h3>
+              <p class="text__muted description">
+                Practicing traffic filtering and address translation with ACLs
+                and NAT, alongside DHCP, DNS, and secure device access concepts.
+              </p>
+              <a href="#projects" class="service-link"
+                >Explore lab scenarios <i data-lucide="arrow-up-right"></i
+              ></a>
+            </article>
+            <article class="service">
+              <div class="flex__center circle">
+                <div class="spotlight"></div>
+                <div class="icon__container">
+                  <i data-lucide="scan-search"></i>
+                </div>
+              </div>
+              <p class="service-index">03 / RELIABILITY</p>
+              <h3 class="name">Troubleshooting</h3>
+              <p class="text__muted description">
+                Following a repeatable process: identify the scope, inspect
+                interfaces and routes, test reachability, isolate the fault,
+                then verify the fix.
+              </p>
+              <a href="#contact" class="service-link"
+                >Talk networking <i data-lucide="arrow-up-right"></i
+              ></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section__header">
+            <p class="eyebrow"><span></span> PRACTICE TOPOLOGIES</p>
+            <h2 class="sub__title">
+              Lab <span class="primary">scenarios</span>
+            </h2>
+            <p class="description">
+              A roadmap of CCNA and CCNP Enterprise concepts I’m applying in a
+              home lab environment. Each scenario can be expanded with a
+              topology, configuration, and verification notes.
+            </p>
+          </div>
+
+          <div class="projects">
+            <article class="project">
+              <div class="lab-art lab-art--campus" aria-hidden="true">
+                <span class="lab-pill">CAMPUS LAN</span>
+                <div class="lab-core"><i data-lucide="network"></i></div>
+                <div class="lab-line lab-line--left"></div>
+                <div class="lab-line lab-line--right"></div>
+                <div class="lab-switch lab-switch--left">
+                  <i data-lucide="server"></i>
+                </div>
+                <div class="lab-switch lab-switch--right">
+                  <i data-lucide="server"></i>
+                </div>
+                <div class="lab-endpoints"><i></i><i></i><i></i><i></i></div>
+                <span class="lab-caption"
+                  >VLAN 10 &nbsp; / &nbsp; VLAN 20 &nbsp; / &nbsp; 802.1Q</span
+                >
+              </div>
+              <div class="project-details">
+                <div class="project-meta">
+                  <span>01</span><span>SWITCHING</span>
+                </div>
+                <h3>Segmented campus network</h3>
+                <p class="text__muted description">
+                  Plan an access layer with separate user VLANs, trunk links,
+                  and inter-VLAN routing. Verify port membership, trunk state,
+                  and end-to-end connectivity.
+                </p>
+                <div class="project-tags">
+                  <span>VLANs</span><span>Trunks</span
+                  ><span>Inter-VLAN routing</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="lab-art lab-art--ospf" aria-hidden="true">
+                <span class="lab-pill">ROUTED CORE</span>
+                <div class="ospf-ring"></div>
+                <div class="ospf-node ospf-node--one">R1</div>
+                <div class="ospf-node ospf-node--two">R2</div>
+                <div class="ospf-node ospf-node--three">R3</div>
+                <div class="ospf-center">OSPF</div>
+                <span class="lab-caption"
+                  >AREA 0 &nbsp; · &nbsp; NEIGHBORS &nbsp; · &nbsp; ROUTES</span
+                >
+              </div>
+              <div class="project-details">
+                <div class="project-meta">
+                  <span>02</span><span>ROUTING</span>
+                </div>
+                <h3>Multi-router OSPF</h3>
+                <p class="text__muted description">
+                  Connect routed segments with OSPF, establish neighbor
+                  adjacencies, inspect learned routes, and trace how a path
+                  changes after a link failure.
+                </p>
+                <div class="project-tags">
+                  <span>OSPF</span><span>Routing tables</span
+                  ><span>Failover</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="lab-art lab-art--edge" aria-hidden="true">
+                <span class="lab-pill">NETWORK EDGE</span>
+                <div class="edge-cloud">
+                  <i data-lucide="cloud"></i><span>WAN</span>
+                </div>
+                <div class="edge-firewall"><i data-lucide="shield"></i></div>
+                <div class="edge-lan">
+                  <i data-lucide="network"></i><span>INSIDE</span>
+                </div>
+                <div class="edge-path edge-path--one"></div>
+                <div class="edge-path edge-path--two"></div>
+                <span class="lab-caption"
+                  >ACL POLICY &nbsp; · &nbsp; NAT / PAT</span
+                >
+              </div>
+              <div class="project-details">
+                <div class="project-meta">
+                  <span>03</span><span>SECURITY</span>
+                </div>
+                <h3>Controlled internet edge</h3>
+                <p class="text__muted description">
+                  Apply an access policy between inside and outside networks,
+                  configure address translation, and verify permitted and denied
+                  traffic paths.
+                </p>
+                <div class="project-tags">
+                  <span>ACLs</span><span>NAT / PAT</span
+                  ><span>Verification</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="lab-art lab-art--resilience" aria-hidden="true">
+                <span class="lab-pill">HIGH AVAILABILITY</span>
+                <div class="res-core res-core--one">
+                  <i data-lucide="server"></i><span>CORE A</span>
+                </div>
+                <div class="res-core res-core--two">
+                  <i data-lucide="server"></i><span>CORE B</span>
+                </div>
+                <div class="res-link res-link--one"></div>
+                <div class="res-link res-link--two"></div>
+                <div class="res-access">
+                  <i data-lucide="laptop"></i><i data-lucide="printer"></i
+                  ><i data-lucide="wifi"></i>
+                </div>
+                <span class="lab-caption"
+                  >STP &nbsp; · &nbsp; ETHERCHANNEL &nbsp; · &nbsp; FHRP</span
+                >
+              </div>
+              <div class="project-details">
+                <div class="project-meta">
+                  <span>04</span><span>RESILIENCE</span>
+                </div>
+                <h3>Redundant campus core</h3>
+                <p class="text__muted description">
+                  Explore redundant uplinks, loop prevention, link aggregation,
+                  and first-hop redundancy. Test convergence and identify the
+                  active forwarding path.
+                </p>
+                <div class="project-tags">
+                  <span>STP</span><span>EtherChannel</span
+                  ><span>HSRP concepts</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <br />
+          <p class="lab-disclaimer">
+            <i data-lucide="info"></i> These are study and simulation scenarios;
+            <!-- implementation notes and lab files can be added as each exercise is
+            completed. -->
+          </p>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="container">
+          <div class="left__column">
+            <div class="box">
+              <div class="cluster">
+                <p class="eyebrow"><span></span> LET’S TALK NETWORKS</p>
+                <h2 class="sub__title">
+                  Good connections start with a
+                  <span class="primary">conversation.</span>
+                </h2>
+                <p class="description">
+                  I’m open to entry-level networking opportunities, mentorship,
+                  and conversations about Cisco networking and infrastructure.
+                </p>
+              </div>
+              <div class="contact-decoration" aria-hidden="true">
+                <i data-lucide="radio-tower"></i><span></span><span></span>
+              </div>
+            </div>
+            <div class="box contact-options">
+              <div class="cluster">
+                <a class="flex option" href="mailto:hb8784@gmail.com"
+                  ><span class="icon__container"
+                    ><i data-lucide="mail"></i></span
+                  ><span class="details"
+                    ><span class="name">Email</span
+                    ><span class="text__muted value"
+                      >hb8784@gmail.com</span
+                    ></span
+                  ><i data-lucide="arrow-up-right" class="option-arrow"></i
+                ></a>
+                <a class="flex option" href="tel:+916290465395"
+                  ><span class="icon__container"
+                    ><i data-lucide="phone"></i></span
+                  ><span class="details"
+                    ><span class="name">Phone</span
+                    ><span class="text__muted value"
+                      >+91 62904 65395</span
+                    ></span
+                  ><i data-lucide="arrow-up-right" class="option-arrow"></i
+                ></a>
+                <div class="flex option">
+                  <span class="icon__container"
+                    ><i data-lucide="map-pin"></i></span
+                  ><span class="details"
+                    ><span class="name">Location</span
+                    ><span class="text__muted value">Kolkata, India</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <form class="contact__form" id="contact-form">
+            <div class="spotlight"></div>
+            <p class="eyebrow"><span></span> SEND A MESSAGE</p>
+            <h2 class="sub__title">
+              Tell me what’s <span class="primary">on your mind.</span>
+            </h2>
+            <div class="row">
+              <label class="sr-only" for="first-name">First name</label>
+              <input
+                id="first-name"
+                type="text"
+                placeholder="First name"
+                name="firstname"
+                class="control"
+                autocomplete="given-name"
+                required
+              />
+              <label class="sr-only" for="last-name">Last name</label>
+              <input
+                id="last-name"
+                type="text"
+                placeholder="Last name"
+                name="lastname"
+                class="control"
+                autocomplete="family-name"
+                required
+              />
+              <label class="sr-only" for="email-address">Email address</label>
+              <input
+                id="email-address"
+                type="email"
+                placeholder="you@email.com"
+                name="email"
+                class="control"
+                autocomplete="email"
+                required
+              />
+              <label class="sr-only" for="phone-number"
+                >Phone number (optional)</label
+              >
+              <input
+                id="phone-number"
+                type="tel"
+                placeholder="Phone (optional)"
+                name="phone"
+                class="control"
+                autocomplete="tel"
+              />
+            </div>
+            <label class="sr-only" for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your message"
+              class="control"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn__primary submit__btn">
+              Continue to email <i data-lucide="send"></i>
+            </button>
+            <p class="form-note">
+              Your email app will open with the message ready to send.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <div class="spotlight"></div>
+      <div class="container">
+        <div class="grid">
+          <div class="col-2 column">
+            <a class="logo" href="#header" aria-label="Hatif Belal Khan, home"
+              ><span class="logo-mark">HK</span
+              ><span class="logo-name">HATIF <span>/ NETWORKS</span></span></a
+            >
+            <p class="text__muted description">
+              Learning, labbing, and documenting the networks that connect our
+              world.
+            </p>
+            <div class="flex social__handles" aria-label="Social links">
+              <a
+                href="https://github.com/hbk8784"
+                target="_blank"
+                rel="noreferrer"
+                class="icon__container handle"
+                aria-label="GitHub"
+                ><i data-custom-icon="github"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/hatif-belal-khan-4074a5230"
+                target="_blank"
+                rel="noreferrer"
+                class="icon__container handle"
+                aria-label="LinkedIn"
+                ><i data-custom-icon="linkedin"></i
+              ></a>
+              <a
+                href="mailto:hb8784@gmail.com"
+                class="icon__container handle"
+                aria-label="Email"
+                ><i data-custom-icon="email"></i
+              ></a>
+            </div>
+          </div>
+          <div class="column">
+            <h3 class="group__name">Explore</h3>
+            <div class="routes__container">
+              <a href="#about" class="route__item">About</a>
+              <a href="#services" class="route__item">Network focus</a>
+              <a href="#projects" class="route__item">Lab scenarios</a>
+              <a href="#contact" class="route__item">Contact</a>
+            </div>
+          </div>
+          <div class="column">
+            <h3 class="group__name">Study areas</h3>
+            <div class="routes__container">
+              <a href="#projects" class="route__item"
+                >Routing &amp; switching</a
+              >
+              <a href="#projects" class="route__item">Network security</a>
+              <a href="#projects" class="route__item">Enterprise design</a>
+              <a href="#projects" class="route__item">Troubleshooting</a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© <span id="current-year">2026</span> Hatif Belal Khan</p>
+          <p class="text__muted">
+            CCNA foundations · CCNP Enterprise study path
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
