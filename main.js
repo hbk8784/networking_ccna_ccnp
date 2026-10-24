@@ -1,6 +1,6 @@
 lucide.createIcons();
 hljs.highlightAll();
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 const dataCustomIcon = document.querySelectorAll("[data-custom-icon]");
 dataCustomIcon.forEach((icon) => {
@@ -8,7 +8,7 @@ dataCustomIcon.forEach((icon) => {
     const request = new XMLHttpRequest();
     request.open(
       "GET",
-      "./assets/icons/" + icon.getAttribute("data-custom-icon") + ".svg"
+      "./assets/icons/" + icon.getAttribute("data-custom-icon") + ".svg",
     );
 
     request.setRequestHeader("Content-Type", "image/svg+xml");
@@ -59,7 +59,7 @@ window.onscroll = () => {
   if (currentSection) {
     const sectionId = currentSection.getAttribute("id");
     const activeLink = document.querySelector(
-      `#navbar .nav__routes a[href="#${sectionId}"]`
+      `#navbar .nav__routes a[href="#${sectionId}"]`,
     );
     if (activeLink) {
       activeLink.classList.add("active");
@@ -113,100 +113,100 @@ document.querySelectorAll(".sidebar .navitem").forEach((link) => {
 // ================ Header Start =====================
 
 // Gsap Code - Wait for DOM to be ready
-document.addEventListener("DOMContentLoaded", function () {
-  // Header animations
-  gsap
-    .timeline({ delay: 0.5 })
-    .from("#header .points", { opacity: 0, y: -30 })
-    .from("#header .me", { opacity: 0, scale: 0.7 })
-    .from(
-      ["#header .user_info .sub__title", "#header .user_info .description"],
-      { opacity: 0, y: 20, stagger: 0.15 }
-    )
-    .from("#header .user_info .title", { opacity: 0, x: -30 })
-    .from("#header .user_info .buttons", { opacity: 0, x: -30 })
-    .from("#header .point", { opacity: 0, x: -30, stagger: 0.5 });
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Header animations
+//   gsap
+//     .timeline({ delay: 0.5 })
+//     .from("#header .points", { opacity: 0, y: -30 })
+//     .from("#header .me", { opacity: 0, scale: 0.7 })
+//     .from(
+//       ["#header .user_info .sub__title", "#header .user_info .description"],
+//       { opacity: 0, y: 20, stagger: 0.15 },
+//     )
+//     .from("#header .user_info .title", { opacity: 0, x: -30 })
+//     .from("#header .user_info .buttons", { opacity: 0, x: -30 })
+//     .from("#header .point", { opacity: 0, x: -30, stagger: 0.5 });
 
-  // ================ Header ends ======================
+// ================ Header ends ======================
 
-  // ================ About Start =====================
+// ================ About Start =====================
 
-  gsap
-    .timeline({
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top bottom",
-        end: "bottom top",
-      },
-    })
-    .from("#about .box", { opacity: 0, y: 30, stagger: 0.5 });
+// gsap
+//   .timeline({
+//     delay: 0.5,
+//     scrollTrigger: {
+//       trigger: "#about",
+//       start: "top bottom",
+//       end: "bottom top",
+//     },
+//   })
+//   .from("#about .box", { opacity: 0, y: 30, stagger: 0.5 });
 
-  // ================ About End =====================
+// ================ About End =====================
 
-  // ==================== Service Start ===============
-  gsap
-    .timeline({
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: "#services",
-        start: "top bottom",
-        end: "bottom top",
-      },
-    })
-    .from(
-      [
-        "#services .section__header .sub__title",
-        "#services .section__header .description",
-      ],
-      { opacity: 0, y: 30, stagger: 0.5 }
-    )
-    .from("#services .service", { opacity: 0, y: 30, stagger: 0.5 });
-  // ==================== Service End ===============
+// ==================== Service Start ===============
+// gsap
+//   .timeline({
+//     delay: 0.5,
+//     scrollTrigger: {
+//       trigger: "#services",
+//       start: "top bottom",
+//       end: "bottom top",
+//     },
+//   })
+//   .from(
+//     [
+//       "#services .section__header .sub__title",
+//       "#services .section__header .description",
+//     ],
+//     { opacity: 0, y: 30, stagger: 0.5 },
+//   )
+//   .from("#services .service", { opacity: 0, y: 30, stagger: 0.5 });
+// ==================== Service End ===============
 
-  // ================== Project Start =====================
-  gsap
-    .timeline({
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top bottom",
-        end: "bottom top",
-      },
-    })
-    .from(
-      [
-        "#projects .section__header .sub__title",
-        "#projects .section__header .description",
-      ],
-      { opacity: 0, y: 30, stagger: 0.5 }
-    )
-    .from("#projects .project", { opacity: 0, y: 30, stagger: 0.5 });
+// ================== Project Start =====================
+// gsap
+//   .timeline({
+//     delay: 0.5,
+//     scrollTrigger: {
+//       trigger: "#projects",
+//       start: "top bottom",
+//       end: "bottom top",
+//     },
+//   })
+//   .from(
+//     [
+//       "#projects .section__header .sub__title",
+//       "#projects .section__header .description",
+//     ],
+//     { opacity: 0, y: 30, stagger: 0.5 },
+//   )
+//   .from("#projects .project", { opacity: 0, y: 30, stagger: 0.5 });
 
-  // ================== Project End =====================
+// ================== Project End =====================
 
-  //================ Contact start =====================
+//================ Contact start =====================
 
-  gsap
-    .timeline({
-      delay: 0.5,
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top bottom",
-        end: "bottom top",
-      },
-    })
-    .from("#contact .box", { opacity: 0, y: 30, stagger: 0.5 })
-    .from("#contact .contact__form", { opacity: 0, x: 30 });
+//   gsap
+//     .timeline({
+//       delay: 0.5,
+//       scrollTrigger: {
+//         trigger: "#contact",
+//         start: "top bottom",
+//         end: "bottom top",
+//       },
+//     })
+//     .from("#contact .box", { opacity: 0, y: 30, stagger: 0.5 })
+//     .from("#contact .contact__form", { opacity: 0, x: 30 });
 
-  //================ Contact End =====================
-});
+//   //================ Contact End =====================
+// });
 
 // ======================== Toast =========================
 
 async function createToast(
   msg,
-  options = { title: "", varient: "info", duration: 5000 }
+  options = { title: "", varient: "info", duration: 5000 },
 ) {
   if (!msg) {
     return;
@@ -224,7 +224,7 @@ async function createToast(
   }
 
   const icon = await findIcon(
-    varient == "success" ? "correct" : varient == "info" ? "info" : "cross"
+    varient == "success" ? "correct" : varient == "info" ? "info" : "cross",
   );
 
   const container = document.querySelector("#toast-container");
@@ -257,7 +257,8 @@ contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const formData = new FormData(contactForm);
-  const fullName = `${formData.get("firstname")} ${formData.get("lastname")}`.trim();
+  const fullName =
+    `${formData.get("firstname")} ${formData.get("lastname")}`.trim();
   const email = formData.get("email");
   const phone = formData.get("phone") || "Not provided";
   const message = formData.get("message");
@@ -265,7 +266,7 @@ contactForm.addEventListener("submit", (event) => {
   const body = `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone}\n\n${message}`;
 
   const mailtoUrl = `mailto:hb8784@gmail.com?subject=${encodeURIComponent(
-    subject
+    subject,
   )}&body=${encodeURIComponent(body)}`;
   window.location.href = mailtoUrl;
 });
